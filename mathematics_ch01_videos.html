@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Work Videos | Mathematics | Study Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Video page specific styles */
+        .video-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2.5rem;
+        }
+
+        .video-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .video-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .video-section p {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #edf2f7;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-button {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .video-info {
+            padding: 1.25rem;
+        }
+
+        .video-info h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .video-info p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f0f4f8;
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-meta i {
+            margin-right: 0.4rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0 3rem;
+        }
+
+        .navigation-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Modal styles for embedded video player */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            width: 80%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-modal-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .video-modal-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--danger-color);
+        }
+
+        .video-embed-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-section {
+                padding: 1.5rem;
+            }
+
+            .video-modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1>Time and Work - Video Lectures</h1>
+            <p>Chapter 01 of Mathematics</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="mathematics.html">Mathematics</a>
+        <span>/</span>
+        <a href="mathematics_ch01.html">Chapter 01 - Time and Work</a>
+        <span>/</span>
+        <a href="mathematics_ch01_videos.html" class="active">Video Lectures</a>
+    </div>
+
+    <section class="video-section">
+        <h2>Video Lectures for Time and Work</h2>
+        <p>These video lectures cover all important concepts and problem-solving techniques for Time and Work problems. Watch them in sequence for better understanding.</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="uvqLzNGGs4c" data-title="Lecture: 01 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 1">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 01 (Time & Work)</h3>
+                        <p>Time & work lecture (01) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 25:45</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 15, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="5k_1EL2UrA4" data-title="Lecture: 02 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 02 (Time & Work)</h3>
+                        <p>Time & work lecture (02) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 30:12</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 16, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="fFN3mliR1e0" data-title="Lecture: 03 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 3">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 03 (Time & Work)</h3>
+                        <p>Time & work lecture (03) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 35:18</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 18, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="rtSbayu7Qso" data-title="Lecture: 04 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 4">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 04 (Time & Work)</h3>
+                        <p>Time & work lecture (04) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 28:40</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 20, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="R2GSc1Im9is" data-title="Lecture: 05 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 5">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 05 (Time & Work)</h3>
+                        <p>Time & work lecture (05) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 32:15</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 22, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="djNZvPEHNhk" data-title="Lecture: 06 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 6">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 06 (Time & Work)</h3>
+                        <p>Time & work lecture (06) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 26:30</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 24, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="YKxDmwaRmto" data-title="Lecture: 07 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 7">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 07 (Time & Work)</h3>
+                        <p>Time & work lecture (07) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 22:45</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 26, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="IfGw1K9FvTk" data-title="Lecture: 08 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 8">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 08 (Time & Work)</h3>
+                        <p>Time & work lecture (08) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 20:10</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 28, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="mk7vw2E8Ka4" data-title="Lecture: 09 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 9">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 09 (Time & Work)</h3>
+                        <p>Time & work lecture (09) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 27:35</span>
+                            <span><i class="fas fa-calendar-alt"></i> Apr 30, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="XiJA33oW9zo" data-title="Lecture: 10 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 10">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 10 (Time & Work)</h3>
+                        <p>Time & work lecture (10) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 29:20</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 02, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="RpqMqPPWNss" data-title="Lecture: 11 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 11">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 11 (Time & Work)</h3>
+                        <p>Time & work lecture (11) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 31:15</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 04, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="0xiu3Q_Ebc8" data-title="Lecture: 12 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 12">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 12 (Time & Work)</h3>
+                        <p>Time & work lecture (12) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 24:50</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 06, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec13" data-title="Lecture: 13 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 13">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 13 (Time & Work)</h3>
+                        <p>Time & work lecture (13) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 28:25</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 08, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec14" data-title="Lecture: 14 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 14">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 14 (Time & Work)</h3>
+                        <p>Time & work lecture (14) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 33:40</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 10, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec15" data-title="Lecture: 15 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 15">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 15 (Time & Work)</h3>
+                        <p>Time & work lecture (15) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 26:15</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 12, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec16" data-title="Lecture: 16 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 16">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 16 (Time & Work)</h3>
+                        <p>Time & work lecture (16) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 30:55</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 14, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec17" data-title="Lecture: 17 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 17">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 17 (Time & Work)</h3>
+                        <p>Time & work lecture (17) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 27:30</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 16, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec18" data-title="Lecture: 18 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 18">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 18 (Time & Work)</h3>
+                        <p>Time & work lecture (18) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 29:45</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 18, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="lec19" data-title="Lecture: 19 (Time & Work)">
+                    <div class="video-thumbnail">
+                        <img src="TimeAndWorkCover.jpg" alt="Lecture 19">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Lecture: 19 (Time & Work)</h3>
+                        <p>Time & work lecture (19) of time and work by Pawan Rao Sir</p>
+                        <div class="video-meta">
+                            <span><i class="fas fa-clock"></i> 32:20</span>
+                            <span><i class="fas fa-calendar-alt"></i> May 20, 2025</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="navigation-buttons">
+        <a href="mathematics_ch01.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Chapter</a>
+        <a href="#" class="btn">Next Chapter <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoTitle">Video Title</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="video-embed-container">
+                <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+    </footer>
+</div>
+
+<script>
+    // Get modal elements
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoTitle = document.getElementById('videoTitle');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Get all video links
+    const videoLinks = document.querySelectorAll('.video-link');
+
+    // Add click event to video links
+    videoLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get video ID and title from data attributes
+            const videoId = this.getAttribute('data-video-id');
+            const title = this.getAttribute('data-title');
+
+            // Set iframe src with video ID
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+            // Set video title
+            videoTitle.textContent = title;
+
+            // Show modal
+            videoModal.style.display = 'flex';
+        });
+    });
+
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+        // Stop video playback by removing src
+        videoPlayer.src = '';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+        if (e.target === videoModal) {
+            videoModal.style.display = 'none';
+            // Stop video playback by removing src
+            videoPlayer.src = '';
+        }
+    });
+</script>
+
+</body>
+</html>

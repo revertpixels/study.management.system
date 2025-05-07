@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Work PDFs | Mathematics | Study Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pdf-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-icon {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .pdf-icon i {
+            font-size: 3rem;
+            color: #e53e3e;
+        }
+
+        .pdf-info {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .pdf-info p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .pdf-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .pdf-actions .btn {
+            flex: 1;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1>Time and Work - PDF Notes & Questions</h1>
+            <p>Chapter 01 of Mathematics</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="mathematics.html">Mathematics</a>
+        <span>/</span>
+        <a href="mathematics_ch01.html">Chapter 01 - Time and Work</a>
+        <span>/</span>
+        <a href="mathematics_ch01_pdf.html" class="active">PDF Notes & Questions</a>
+    </div>
+
+    <section class="pdf-section">
+        <h2>PDF Notes and Question Sets</h2>
+        <p>Download comprehensive study materials, formula sheets, and practice questions for Time and Work.</p>
+
+        <div class="pdf-grid">
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Complete Theory Notes</h3>
+                    <p>Comprehensive explanation of all Time and Work concepts with examples and illustrations</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 25 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 10, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Formula Sheet</h3>
+                    <p>Quick reference guide with all important formulas for Time and Work problems</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 3 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 12, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Basic Practice Set</h3>
+                    <p>50 beginner level questions with step-by-step solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 15 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 15, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Intermediate Practice Set</h3>
+                    <p>40 medium difficulty questions with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 18 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 18, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Advanced Practice Set</h3>
+                    <p>30 challenging questions with comprehensive solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 20 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 20, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Pipes and Cisterns Notes</h3>
+                    <p>Specialized notes focusing only on pipes and cisterns problems</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 12 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 22, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Work and Wages Notes</h3>
+                    <p>Detailed explanation of work and wages problems with examples</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 10 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 24, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Quiz Worksheets</h3>
+                    <p>5 timed worksheets to test your knowledge and speed</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 8 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 26, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="navigation-buttons">
+        <a href="mathematics_ch01.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Chapter</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+    </footer>
+</div>
+</body>
+</html>

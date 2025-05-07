@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics | Study Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Chapter list styles - improved layout */
+        .chapter-list {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chapter-list h2 {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+
+        .chapter-list h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        /* Chapter row style - replaces grid layout */
+        .chapter-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.2s ease;
+        }
+
+        .chapter-row:hover {
+            background-color: #ffffff;
+            border-left-width: 6px;
+            transform: translateX(3px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .chapter-info {
+            flex: 1;
+        }
+
+        .chapter-info h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .chapter-info p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin: 0;
+            padding-right: 2rem;
+        }
+
+        .chapter-action {
+            min-width: 120px;
+            text-align: right;
+            padding-left: 1rem;
+        }
+
+        /* Enhanced subject header */
+        .subject-header {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #4a5568 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .subject-header h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .subject-header p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        /* Improved download button */
+        .download-btn {
+            background-color: white;
+            color: var(--accent-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn i {
+            margin-right: 8px;
+        }
+
+
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .chapter-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .chapter-info {
+                margin-bottom: 1rem;
+                width: 100%;
+            }
+
+            .chapter-info p {
+                padding-right: 0;
+            }
+
+            .chapter-action {
+                width: 100%;
+                text-align: left;
+                padding-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1>Mathematics</h1>
+            <p>CDS & SSC Preparation</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="mathematics.html" class="active">Mathematics</a>
+    </div>
+
+    <section class="subject-header">
+        <h2>Mathematics for Defence Exams</h2>
+        <p>Mathematics is a crucial subject for CDS, AFCAT, SSC, and other competitive examinations. The questions test your logical and analytical abilities through various concepts including arithmetic, algebra, geometry, and more.</p>
+        <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Syllabus PDF</a>
+    </section>
+
+    <section class="chapter-list">
+        <h2>Chapters</h2>
+
+        <!-- Chapter rows instead of grid -->
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 01 - Time and Work</h3>
+                <p>Learn concepts of time and work problems, work efficiency, pipes and cisterns, and related applications for competitive exams.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch01.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 02 - Algebra</h3>
+                <p>Explore algebraic expressions, equations, inequalities, quadratic equations, and their applications in solving complex problems.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch02.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 03 - Geometry</h3>
+                <p>Study lines, angles, triangles, circles, and other geometric concepts necessary for spatial reasoning questions.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch03.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 04 - Mensuration</h3>
+                <p>Learn to calculate area, volume, and surface area of various 2D and 3D shapes with practical applications.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch04.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 05 - Trigonometry</h3>
+                <p>Understand trigonometric ratios, identities, and their applications in solving problems related to heights and distances.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch05.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 06 - Percentage and Profit & Loss</h3>
+                <p>Master percentage calculations, profit, loss, discount problems, and their applications in commercial mathematics.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch06.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 07 - Number System</h3>
+                <p>Study properties of numbers, divisibility rules, LCM, HCF, prime numbers, and advanced number theory concepts.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch07.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 08 - Simple & Compound Interest</h3>
+                <p>Learn formulas and methods to solve problems related to simple interest, compound interest, and installment payments.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch08.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 09 - Statistics & Data Interpretation</h3>
+                <p>Master concepts of mean, median, mode, standard deviation, and interpretation of graphs and charts.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch09.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 10 - Ratio, Proportion & Variation</h3>
+                <p>Understand direct and inverse proportions, partnership, mixtures, and applications in solving real-world problems.</p>
+
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch10.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 11 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch11.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 12 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch12.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 13 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch13.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 14 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch14.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 15 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch15.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 16 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch16.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 17 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch17.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 18 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch18.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 19 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch19.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 20 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch20.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 21 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch21.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 22 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch22.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 23 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch23.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 24 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch24.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+        <div class="chapter-row">
+            <div class="chapter-info">
+                <h3>Chapter 25 - </h3>
+                <p>Chapter details not updated yet.</p>
+            </div>
+            <div class="chapter-action">
+                <a href="mathematics_ch25.html" class="btn">Open Chapter</a>
+            </div>
+        </div>
+
+
+    </section>
+
+
+
+    <footer>
+        <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+    </footer>
+</div>
+</body>
+</html>

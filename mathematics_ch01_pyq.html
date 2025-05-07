@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time and Work PYQs | Mathematics | Study Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .pdf-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .pdf-icon {
+            background-color: #f8f9fa;
+            padding: 2rem 0;
+            text-align: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .pdf-icon i {
+            font-size: 3rem;
+            color: #e53e3e;
+        }
+
+        .pdf-info {
+            padding: 1rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pdf-info h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .pdf-info p {
+            color: var(--secondary-color);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .pdf-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary-color);
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .pdf-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .pdf-actions .btn {
+            flex: 1;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+
+        .exam-tabs {
+            display: flex;
+            border-bottom: 2px solid #e2e8f0;
+            margin-bottom: 1.5rem;
+            overflow-x: auto;
+        }
+
+        .exam-tab {
+            padding: 0.75rem 1.5rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+
+        .exam-tab.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            margin-bottom: -2px;
+        }
+
+        .exam-tab:hover:not(.active) {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1>Time and Work - Previous Year Questions</h1>
+            <p>Chapter 01 of Mathematics</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="mathematics.html">Mathematics</a>
+        <span>/</span>
+        <a href="mathematics_ch01.html">Chapter 01 - Time and Work</a>
+        <span>/</span>
+        <a href="mathematics_ch01_pyq.html" class="active">Previous Year Questions</a>
+    </div>
+
+    <section class="pyq-section">
+        <h2>Previous Year Questions for Time and Work</h2>
+        <p>Download and practice questions from past examinations to get familiar with the pattern and difficulty level.</p>
+
+        <div class="exam-tabs">
+            <div class="exam-tab active">CDS</div>
+            <div class="exam-tab">AFCAT</div>
+            <div class="exam-tab">SSC</div>
+            <div class="exam-tab">NDA</div>
+            <div class="exam-tab">All Exams</div>
+        </div>
+
+        <div class="pdf-grid">
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 2025 (I) Questions</h3>
+                    <p>Time and Work questions from CDS 2025 (I) with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 8 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Feb 15, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 2024 (II) Questions</h3>
+                    <p>Time and Work questions from CDS 2024 (II) with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 10 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Nov 5, 2024</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 2024 (I) Questions</h3>
+                    <p>Time and Work questions from CDS 2024 (I) with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 9 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 21, 2024</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 2023 (II) Questions</h3>
+                    <p>Time and Work questions from CDS 2023 (II) with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 12 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Sep 3, 2023</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 2023 (I) Questions</h3>
+                    <p>Time and Work questions from CDS 2023 (I) with detailed solutions</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 10 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 16, 2023</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS 5-Year Compilation</h3>
+                    <p>Comprehensive collection of Time and Work questions from 2020-2025 CDS exams</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 35 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Mar 10, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>Time and Work - Trend Analysis</h3>
+                    <p>Analysis of Time and Work questions pattern and difficulty in CDS exams</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 15 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Mar 20, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pdf-card">
+                <div class="pdf-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <div class="pdf-info">
+                    <h3>CDS Topic-wise PYQs</h3>
+                    <p>Questions categorized by sub-topics within Time and Work</p>
+                    <div class="pdf-meta">
+                        <span><i class="fas fa-file-alt"></i> 22 pages</span>
+                        <span><i class="fas fa-calendar-alt"></i> Apr 2, 2025</span>
+                    </div>
+                    <div class="pdf-actions">
+                        <a href="#" class="btn"><i class="fas fa-download"></i> Download</a>
+                        <a href="#" class="btn"><i class="fas fa-eye"></i> Preview</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="pyq-stats">
+        <h2>Topic Analysis</h2>
+        <p>Time and Work questions distribution in recent CDS examinations:</p>
+        <div class="stats-container" style="background: white; padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); margin-bottom: 2rem;">
+            <ul style="list-style-type: none; padding: 0;">
+                <li style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                    <span>Basic Time and Work</span>
+                    <span>35%</span>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                    <span>Pipes and Cisterns</span>
+                    <span>25%</span>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                    <span>Work and Wages</span>
+                    <span>20%</span>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.75rem 0; border-bottom: 1px solid #e2e8f0;">
+                    <span>Efficiency Based Problems</span>
+                    <span>15%</span>
+                </li>
+                <li style="display: flex; justify-content: space-between; padding: 0.75rem 0;">
+                    <span>Other Sub-topics</span>
+                    <span>5%</span>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="exam-strategy">
+        <h2>Examination Strategy</h2>
+        <div style="background: white; padding: 1.5rem; border-radius: var(--border-radius); box-shadow: var(--box-shadow); margin-bottom: 2rem;">
+            <p>Based on analysis of previous year questions, here are some strategies for Time and Work problems:</p>
+            <ul style="margin-top: 1rem; padding-left: 1.5rem;">
+                <li>The average number of Time and Work questions in CDS exam is 3-4 out of 100 questions.</li>
+                <li>Questions typically involve basic concepts but may require multiple steps to solve.</li>
+                <li>Practice calculating LCM quickly as it's essential for solving multiple workers problems.</li>
+                <li>Focus on Pipes and Cisterns as they appear more frequently in recent papers.</li>
+                <li>Keep track of units (days, hours, minutes) carefully throughout your calculations.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="navigation-buttons">
+        <a href="mathematics_ch01.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Chapter</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+    </footer>
+</div>
+
+<script>
+    // Basic tab functionality
+    document.querySelectorAll('.exam-tab').forEach(tab => {
+        tab.addEventListener('click', function() {
+            // Remove active class from all tabs
+            document.querySelectorAll('.exam-tab').forEach(t => {
+                t.classList.remove('active');
+            });
+
+            // Add active class to clicked tab
+            this.classList.add('active');
+
+            // Here you would typically load different content based on the tab
+            // For this example, we're just showing the UI without actual functionality
+        });
+    });
+</script>
+</body>
+</html>

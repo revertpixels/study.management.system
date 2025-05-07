@@ -1,0 +1,432 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #3a4f63;
+    --secondary-color: #718096;
+    --accent-color: #4c7bf3;
+    --light-color: #f7fafc;
+    --dark-color: #1a202c;
+    --success-color: #48bb78;
+    --warning-color: #ed8936;
+    --danger-color: #e53e3e;
+    --border-radius: 8px;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--dark-color);
+    background-color: #f0f4f8;
+    padding-top: 20px; /* Add padding to the top of the body */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: var(--accent-color);
+    transition: var(--transition);
+}
+
+a:hover {
+    color: #2a5bd7;
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: var(--border-radius);
+    transition: var(--transition);
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    background-color: #3a66cf;
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Header Styles */
+header {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #2d3748 100%);
+    color: white;
+    padding: 3rem 0; /* Increased padding top and bottom */
+    margin: 20px 0 40px 0; /* Added margin top and increased bottom margin */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.header-content {
+    text-align: center;
+    padding: 1.5rem; /* Increased padding */
+}
+
+.header-content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem; /* Increased margin */
+}
+
+.header-content p {
+    font-size: 1.1rem; /* Slightly larger subtitle */
+    opacity: 0.9;
+}
+
+/* Profile Section */
+.profile {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    font-size: 3.5rem;
+    color: var(--secondary-color);
+    margin-right: 1.5rem;
+}
+
+.profile-text h2 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.profile-text p {
+    color: var(--secondary-color);
+}
+
+/* Subject Grid */
+.subjects {
+    margin-bottom: 3rem; /* Increased bottom margin */
+}
+
+.subjects h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem; /* Increased margin */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.subjects h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.subject-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.subject-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    transition: var(--transition);
+    color: var(--dark-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.subject-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.subject-icon {
+    font-size: 2.5rem;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+}
+
+.subject-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.subject-card p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Exam Info Section */
+.exam-info {
+    margin-bottom: 3rem; /* Increased margin */
+}
+
+.exam-info h2 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1.5rem; /* Increased margin */
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.exam-info h2:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: var(--accent-color);
+}
+
+.exam-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.exam-card {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 1.5rem;
+    box-shadow: var(--box-shadow);
+    text-align: center;
+}
+
+.exam-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.exam-card p {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2.5rem 0; /* Increased padding */
+    margin-top: 2rem; /* Added top margin */
+    color: var(--secondary-color);
+    border-top: 1px solid #e2e8f0;
+}
+
+/* Subject Pages Styles */
+.breadcrumb {
+    display: flex;
+    margin-bottom: 1.5rem;
+    background-color: white;
+    padding: 0.75rem 1rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.breadcrumb a {
+    color: var(--secondary-color);
+}
+
+.breadcrumb span {
+    margin: 0 0.5rem;
+    color: var(--secondary-color);
+}
+
+.breadcrumb .active {
+    color: var(--accent-color);
+    font-weight: 500;
+}
+
+.subject-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 2.5rem; /* Increased padding */
+    border-radius: var(--border-radius);
+    margin-bottom: 2.5rem; /* Increased margin */
+    box-shadow: var(--box-shadow);
+}
+
+.subject-header h2 {
+    margin-bottom: 1rem; /* Added spacing */
+}
+
+.chapter-list {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem; /* Increased padding */
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2.5rem; /* Increased margin */
+}
+
+.chapter-list h2 {
+    margin-bottom: 1.5rem; /* Added spacing before chapter items */
+}
+
+.chapter-item {
+    padding: 1.2rem; /* Increased padding */
+    border-bottom: 1px solid #e2e8f0;
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chapter-item:last-child {
+    border-bottom: none;
+}
+
+.chapter-item:hover {
+    background-color: #f8fafc;
+}
+
+.chapter-item h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem; /* Increased spacing */
+}
+
+.chapter-item p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* Chapter Pages Styles */
+.chapter-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem; /* Increased margin */
+}
+
+@media (min-width: 768px) {
+    .chapter-content {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.chapter-section {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem; /* Increased padding */
+    box-shadow: var(--box-shadow);
+}
+
+.chapter-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem; /* Increased margin */
+    padding-bottom: 0.8rem; /* Increased padding */
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.video-item, .pdf-item, .question-item {
+    padding: 1rem 0; /* Increased padding */
+    border-bottom: 1px solid #f0f4f8;
+}
+
+.video-item:last-child, .pdf-item:last-child, .question-item:last-child {
+    border-bottom: none;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 1.5rem; /* Increased margin */
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+}
+
+/* Study Tips Section */
+.study-tips {
+    background-color: white;
+    border-radius: var(--border-radius);
+    padding: 2rem; /* Increased padding */
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2.5rem; /* Increased margin */
+}
+
+.study-tips h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.2rem; /* Increased margin */
+}
+
+.study-tips ul {
+    margin-left: 1.5rem;
+}
+
+.study-tips li {
+    margin-bottom: 0.8rem;
+    color: var(--secondary-color);
+}
+
+.study-tips li:last-child {
+    margin-bottom: 0;
+}
+
+.navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .profile-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+
+    .header-content h1 {
+        font-size: 2rem;
+    }
+
+    .subject-header {
+        padding: 1.8rem; /* Adjusted for mobile */
+    }
+
+    /* Add more space on small screens */
+    header {
+        padding: 2.5rem 0; /* Slightly reduced padding but still more than original */
+        margin: 15px 0 30px 0;
+    }
+
+    .chapter-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chapter-item .btn {
+        margin-top: 1rem;
+        align-self: flex-start;
+    }
+}
