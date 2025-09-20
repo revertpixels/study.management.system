@@ -1,0 +1,3227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reasoning | Study Management System</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Enhanced styles for Reasoning page */
+    .reasoning-hero {
+      background: linear-gradient(135deg, var(--accent-color) 0%, #4a5568 100%);
+      color: white;
+      padding: 3rem 2rem;
+      border-radius: 15px;
+      margin-bottom: 3rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .reasoning-hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .reasoning-hero h1 i {
+      font-size: 2.2rem;
+      opacity: 0.9;
+    }
+
+    .reasoning-hero p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    /* Download button matching mathematics.html style */
+    .download-btn {
+      background-color: white;
+      color: var(--accent-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .download-btn:hover {
+      background-color: #f0f0f0;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .download-btn i {
+      margin-right: 8px;
+    }
+
+    /* Search and Practice Section - Professional Design */
+    .action-section {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .action-container {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      max-width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Professional Search Container */
+    .search-wrapper {
+      flex: 1;
+      position: relative;
+    }
+
+    .search-box {
+      position: relative;
+      background: #f8f9fa;
+      border-radius: 10px;
+      border: 1px solid #dee2e6;
+      transition: all 0.3s ease;
+    }
+
+    .search-box:hover {
+      border-color: #667eea;
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+    }
+
+    .search-box:focus-within {
+      background: white;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    .search-inner {
+      display: flex;
+      align-items: center;
+      position: relative;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1.25rem;
+      color: #6c757d;
+      font-size: 1.1rem;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .search-box:focus-within .search-icon {
+      color: #667eea;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 0.875rem 3rem 0.875rem 3rem;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      background: transparent;
+      transition: all 0.3s ease;
+    }
+
+    .search-input:focus {
+      outline: none;
+    }
+
+    .search-input::placeholder {
+      color: #94a3b8;
+    }
+
+    .clear-search {
+      position: absolute;
+      right: 1rem;
+      color: #94a3b8;
+      cursor: pointer;
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      padding: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .clear-search:hover {
+      color: #dc3545;
+    }
+
+    .clear-search.show {
+      display: block;
+    }
+
+    /* Professional Practice Button */
+    .practice-wrapper {
+      display: flex;
+      align-items: center;
+    }
+
+    .practice-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #667eea;
+      color: white;
+      padding: 0.875rem 1.75rem;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: 1px solid #667eea;
+      white-space: nowrap;
+    }
+
+    .practice-btn:hover {
+      background: #5a67d8;
+      border-color: #5a67d8;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+    }
+
+    .practice-btn i {
+      font-size: 1.2rem;
+    }
+
+    .practice-btn span {
+      display: inline-block;
+    }
+
+    /* Chapters Container */
+    .chapters-container {
+      margin-bottom: 3rem;
+    }
+
+    /* Chapter Dropdown */
+    .chapter-dropdown {
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .chapter-dropdown.expanded {
+      box-shadow: 0 5px 25px rgba(0,0,0,0.12);
+    }
+
+    .chapter-dropdown.hidden {
+      display: none;
+    }
+
+    .chapter-header {
+      padding: 1.5rem;
+      background: linear-gradient(to right, #f8f9fa, white);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+      border-left: 5px solid var(--accent-color);
+    }
+
+    .chapter-header:hover {
+      background: linear-gradient(to right, white, #f8f9fa);
+      padding-left: 2rem;
+    }
+
+    .chapter-dropdown.expanded .chapter-header {
+      background: var(--accent-color);
+      color: white;
+    }
+
+    .chapter-info {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .chapter-icon {
+      font-size: 1.8rem;
+      color: var(--accent-color);
+      opacity: 0.8;
+    }
+
+    .chapter-dropdown.expanded .chapter-icon {
+      color: white;
+      opacity: 0.9;
+    }
+
+    .chapter-details {
+      flex: 1;
+    }
+
+    .chapter-number {
+      font-size: 0.85rem;
+      opacity: 0.8;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .chapter-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .lecture-count {
+      font-size: 0.95rem;
+      opacity: 0.7;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .lecture-count i {
+      font-size: 0.85rem;
+    }
+
+    .dropdown-icon {
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      color: var(--accent-color);
+    }
+
+    .chapter-dropdown.expanded .dropdown-icon {
+      transform: rotate(180deg);
+      color: white;
+    }
+
+    /* Video List */
+    .video-list {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: #fafbfc;
+    }
+
+    .chapter-dropdown.expanded .video-list {
+      max-height: 3000px;
+    }
+
+    .video-list-inner {
+      padding: 1rem;
+    }
+
+    /* Video Item */
+    .video-item {
+      background: white;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .video-item.hidden {
+      display: none;
+    }
+
+    .video-item:last-child {
+      margin-bottom: 0.75rem;
+    }
+
+    .video-item:hover {
+      border-color: var(--accent-color);
+      box-shadow: 0 3px 10px rgba(76, 123, 243, 0.1);
+      transform: translateY(-2px);
+    }
+
+    .video-header {
+      padding: 1rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s ease;
+    }
+
+    .video-item:hover .video-header {
+      background: #f8fafc;
+    }
+
+    .video-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 500;
+    }
+
+    .video-icon {
+      color: var(--secondary-color);
+      font-size: 1rem;
+    }
+
+    .video-number {
+      background: var(--accent-color);
+      color: white;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      min-width: 35px;
+      text-align: center;
+    }
+
+    .play-btn {
+      background: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .play-btn:hover {
+      background: #3a66cf;
+      transform: scale(1.05);
+    }
+
+    /* Modal styles for embedded video player */
+    .video-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-modal-content {
+      width: 90%;
+      max-width: 1000px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .video-modal-header {
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+      border-bottom: 1px solid #2d3748;
+    }
+
+    .video-modal-header h3 {
+      margin: 0;
+      color: white;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .close-modal {
+      font-size: 1.8rem;
+      color: #cbd5e0;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: none;
+      border: none;
+      padding: 0;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+    }
+
+    .close-modal:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(90deg);
+    }
+
+    .video-embed-container {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      height: 0;
+      overflow: hidden;
+      background: black;
+    }
+
+    .video-embed-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* No Results */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 3rem;
+      color: var(--secondary-color);
+      background: white;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    .no-results.show {
+      display: block;
+    }
+
+    .no-results i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0.5;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .reasoning-hero h1 {
+        font-size: 1.8rem;
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .action-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .search-wrapper {
+        width: 100%;
+      }
+
+      .practice-wrapper {
+        width: 100%;
+      }
+
+      .practice-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .chapter-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .chapter-icon {
+        font-size: 1.5rem;
+      }
+
+      .chapter-title {
+        font-size: 1.1rem;
+      }
+
+      .video-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+      }
+
+      .play-btn {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .video-modal-content {
+        width: 95%;
+      }
+
+      .video-modal-header h3 {
+        font-size: 1rem;
+      }
+
+      .download-btn {
+        margin-top: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="header-content">
+      <h1>Reasoning</h1>
+      <p>Master Logical & Analytical Thinking</p>
+    </div>
+  </header>
+
+  <div class="breadcrumb">
+    <a href="index.html">Home</a>
+    <span>/</span>
+    <a href="reasoning.html" class="active">Reasoning</a>
+  </div>
+
+  <!-- Hero Section with Download Button -->
+  <section class="reasoning-hero">
+    <h1><i class="fas fa-brain"></i> Complete Reasoning Course</h1>
+    <p>Comprehensive video lectures covering all aspects of reasoning for competitive examinations. Master logical, analytical, and verbal reasoning skills with expert guidance.</p>
+    <a href="#" class="download-btn"><i class="fas fa-download"></i> Download Syllabus PDF</a>
+  </section>
+
+  <!-- Professional Search and Practice Section -->
+  <section class="action-section">
+    <div class="action-container">
+      <div class="search-wrapper">
+        <div class="search-box">
+          <div class="search-inner">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search chapters or lecture topics...">
+            <button class="clear-search" id="clearSearch" onclick="clearSearch()">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="practice-wrapper">
+        <a href="https://drive.google.com" target="_blank" class="practice-btn">
+          <i class="fab fa-google-drive"></i>
+          <span>Practice Sets</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- No Results Message -->
+  <div class="no-results" id="noResults">
+    <i class="fas fa-search-minus"></i>
+    <h3>No Results Found</h3>
+    <p>Try searching with different keywords</p>
+  </div>
+
+  <!-- Chapters Container -->
+  <section class="chapters-container" id="chaptersContainer">
+
+    <!-- Chapter 1: Introduction -->
+    <div class="chapter-dropdown" id="chapter1" data-chapter="introduction">
+      <div class="chapter-header" onclick="toggleChapter('chapter1')">
+        <div class="chapter-info">
+          <i class="fas fa-book-open chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 01</div>
+            <h3 class="chapter-title">Introduction</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.01" data-title="Introduction Lecture">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">01</span>
+                <span>Introduction Lecture</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 2: Alphabetical Series -->
+    <div class="chapter-dropdown" id="chapter2" data-chapter="alphabetical series">
+      <div class="chapter-header" onclick="toggleChapter('chapter2')">
+        <div class="chapter-info">
+          <i class="fas fa-font chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 02</div>
+            <h3 class="chapter-title">Alphabetical Series</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.02" data-title="Alphabetical Series - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">02</span>
+                <span>Alphabetical Series - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.03" data-title="Alphabetical Series - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">03</span>
+                <span>Alphabetical Series - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.04" data-title="Alphabetical Series - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">04</span>
+                <span>Alphabetical Series - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.05" data-title="Alphabetical Series - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">05</span>
+                <span>Alphabetical Series - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.06" data-title="Alphabetical Series - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">06</span>
+                <span>Alphabetical Series - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.07" data-title="Alphabetical Series - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">07</span>
+                <span>Alphabetical Series - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 3: Letter Series -->
+    <div class="chapter-dropdown" id="chapter3" data-chapter="letter series">
+      <div class="chapter-header" onclick="toggleChapter('chapter3')">
+        <div class="chapter-info">
+          <i class="fas fa-spell-check chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 03</div>
+            <h3 class="chapter-title">Letter Series</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 2 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.08" data-title="Letter Series - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">08</span>
+                <span>Letter Series - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.09" data-title="Letter Series - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">09</span>
+                <span>Letter Series - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 4: Pair Formation -->
+    <div class="chapter-dropdown" id="chapter4" data-chapter="pair formation">
+      <div class="chapter-header" onclick="toggleChapter('chapter4')">
+        <div class="chapter-info">
+          <i class="fas fa-link chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 04</div>
+            <h3 class="chapter-title">Pair Formation</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 2 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.10" data-title="Pair Formation - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">10</span>
+                <span>Pair Formation - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.11" data-title="Pair Formation - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">11</span>
+                <span>Pair Formation - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 5: Word Formation, Dictionary, Jumbling -->
+    <div class="chapter-dropdown" id="chapter5" data-chapter="word formation dictionary jumbling">
+      <div class="chapter-header" onclick="toggleChapter('chapter5')">
+        <div class="chapter-info">
+          <i class="fas fa-language chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 05</div>
+            <h3 class="chapter-title">Word Formation, Dictionary, Jumbling</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.12" data-title="Word Formation, Dictionary, Jumbling">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">12</span>
+                <span>Word Formation, Dictionary, Jumbling</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 6: Coding-Decoding -->
+    <div class="chapter-dropdown" id="chapter6" data-chapter="coding decoding">
+      <div class="chapter-header" onclick="toggleChapter('chapter6')">
+        <div class="chapter-info">
+          <i class="fas fa-code chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 06</div>
+            <h3 class="chapter-title">Coding-Decoding</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.13" data-title="Coding-Decoding - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">13</span>
+                <span>Coding-Decoding - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.14" data-title="Coding-Decoding - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">14</span>
+                <span>Coding-Decoding - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.15" data-title="Coding-Decoding - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">15</span>
+                <span>Coding-Decoding - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.16" data-title="Coding-Decoding - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">16</span>
+                <span>Coding-Decoding - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.17" data-title="Coding-Decoding - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">17</span>
+                <span>Coding-Decoding - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.18" data-title="Coding-Decoding - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">18</span>
+                <span>Coding-Decoding - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 7: Matrix -->
+    <div class="chapter-dropdown" id="chapter7" data-chapter="matrix">
+      <div class="chapter-header" onclick="toggleChapter('chapter7')">
+        <div class="chapter-info">
+          <i class="fas fa-th chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 07</div>
+            <h3 class="chapter-title">Matrix</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.19" data-title="Matrix">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">19</span>
+                <span>Matrix</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 8: Test -->
+    <div class="chapter-dropdown" id="chapter8" data-chapter="test">
+      <div class="chapter-header" onclick="toggleChapter('chapter8')">
+        <div class="chapter-info">
+          <i class="fas fa-clipboard-check chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 08</div>
+            <h3 class="chapter-title">Test</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.20" data-title="Test">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">20</span>
+                <span>Test</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 9: Non-Verbal Reasoning -->
+    <div class="chapter-dropdown" id="chapter9" data-chapter="non-verbal reasoning">
+      <div class="chapter-header" onclick="toggleChapter('chapter9')">
+        <div class="chapter-info">
+          <i class="fas fa-shapes chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 09</div>
+            <h3 class="chapter-title">Non-Verbal Reasoning</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 9 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.21" data-title="Non-Verbal Reasoning - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">21</span>
+                <span>Non-Verbal Reasoning - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.22" data-title="Non-Verbal Reasoning - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">22</span>
+                <span>Non-Verbal Reasoning - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.23" data-title="Non-Verbal Reasoning - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">23</span>
+                <span>Non-Verbal Reasoning - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.24" data-title="Non-Verbal Reasoning - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">24</span>
+                <span>Non-Verbal Reasoning - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.25" data-title="Non-Verbal Reasoning - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">25</span>
+                <span>Non-Verbal Reasoning - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.26" data-title="Non-Verbal Reasoning - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">26</span>
+                <span>Non-Verbal Reasoning - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.27" data-title="Non-Verbal Reasoning - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">27</span>
+                <span>Non-Verbal Reasoning - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.28" data-title="Non-Verbal Reasoning - Lecture 08">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">28</span>
+                <span>Non-Verbal Reasoning - Lecture 08</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.29" data-title="Non-Verbal Reasoning - Lecture 09">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">29</span>
+                <span>Non-Verbal Reasoning - Lecture 09</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 10: Statement & Assumptions (Note: Lectures start from 31) -->
+    <div class="chapter-dropdown" id="chapter10" data-chapter="statement assumptions">
+      <div class="chapter-header" onclick="toggleChapter('chapter10')">
+        <div class="chapter-info">
+          <i class="fas fa-comment-dots chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 10</div>
+            <h3 class="chapter-title">Statement & Assumptions</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 3 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.31" data-title="Statement & Assumptions - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">31</span>
+                <span>Statement & Assumptions - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.32" data-title="Statement & Assumptions - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">32</span>
+                <span>Statement & Assumptions - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.33" data-title="Statement & Assumptions - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">33</span>
+                <span>Statement & Assumptions - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 11: Course of Action -->
+    <div class="chapter-dropdown" id="chapter11" data-chapter="course of action">
+      <div class="chapter-header" onclick="toggleChapter('chapter11')">
+        <div class="chapter-info">
+          <i class="fas fa-route chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 11</div>
+            <h3 class="chapter-title">Course of Action</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.34" data-title="Course of Action">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">34</span>
+                <span>Course of Action</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 12: Statement Arguments -->
+    <div class="chapter-dropdown" id="chapter12" data-chapter="statement arguments">
+      <div class="chapter-header" onclick="toggleChapter('chapter12')">
+        <div class="chapter-info">
+          <i class="fas fa-gavel chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 12</div>
+            <h3 class="chapter-title">Statement Arguments</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.35" data-title="Statement Arguments">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">35</span>
+                <span>Statement Arguments</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 13: Statement & Conclusions -->
+    <div class="chapter-dropdown" id="chapter13" data-chapter="statement conclusions">
+      <div class="chapter-header" onclick="toggleChapter('chapter13')">
+        <div class="chapter-info">
+          <i class="fas fa-check-circle chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 13</div>
+            <h3 class="chapter-title">Statement & Conclusions</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.36" data-title="Statement & Conclusions">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">36</span>
+                <span>Statement & Conclusions</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 14: Reason & Assertions -->
+    <div class="chapter-dropdown" id="chapter14" data-chapter="reason assertions">
+      <div class="chapter-header" onclick="toggleChapter('chapter14')">
+        <div class="chapter-info">
+          <i class="fas fa-balance-scale chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 14</div>
+            <h3 class="chapter-title">Reason & Assertions</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.37" data-title="Reason & Assertions">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">37</span>
+                <span>Reason & Assertions</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 15: Coded Equation -->
+    <div class="chapter-dropdown" id="chapter15" data-chapter="coded equation">
+      <div class="chapter-header" onclick="toggleChapter('chapter15')">
+        <div class="chapter-info">
+          <i class="fas fa-equals chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 15</div>
+            <h3 class="chapter-title">Coded Equation</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.38" data-title="Coded Equation">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">38</span>
+                <span>Coded Equation</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 16: Decision Making -->
+    <div class="chapter-dropdown" id="chapter16" data-chapter="decision making">
+      <div class="chapter-header" onclick="toggleChapter('chapter16')">
+        <div class="chapter-info">
+          <i class="fas fa-decision chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 16</div>
+            <h3 class="chapter-title">Decision Making</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.39" data-title="Decision Making">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">39</span>
+                <span>Decision Making</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 17: Direction & Distance -->
+    <div class="chapter-dropdown" id="chapter17" data-chapter="direction distance">
+      <div class="chapter-header" onclick="toggleChapter('chapter17')">
+        <div class="chapter-info">
+          <i class="fas fa-compass chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 17</div>
+            <h3 class="chapter-title">Direction & Distance</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 7 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.40" data-title="Direction & Distance - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">40</span>
+                <span>Direction & Distance - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.41" data-title="Direction & Distance - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">41</span>
+                <span>Direction & Distance - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.42" data-title="Direction & Distance - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">42</span>
+                <span>Direction & Distance - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.43" data-title="Direction & Distance - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">43</span>
+                <span>Direction & Distance - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.44" data-title="Direction & Distance - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">44</span>
+                <span>Direction & Distance - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.45" data-title="Direction & Distance - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">45</span>
+                <span>Direction & Distance - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.46" data-title="Direction & Distance - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">46</span>
+                <span>Direction & Distance - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 18: Sitting Arrangements -->
+    <div class="chapter-dropdown" id="chapter18" data-chapter="sitting arrangements">
+      <div class="chapter-header" onclick="toggleChapter('chapter18')">
+        <div class="chapter-info">
+          <i class="fas fa-chair chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 18</div>
+            <h3 class="chapter-title">Sitting Arrangements</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 8 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.47" data-title="Sitting Arrangements - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">47</span>
+                <span>Sitting Arrangements - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.48" data-title="Sitting Arrangements - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">48</span>
+                <span>Sitting Arrangements - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.49" data-title="Sitting Arrangements - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">49</span>
+                <span>Sitting Arrangements - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.50" data-title="Sitting Arrangements - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">50</span>
+                <span>Sitting Arrangements - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.51" data-title="Sitting Arrangements - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">51</span>
+                <span>Sitting Arrangements - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.52" data-title="Sitting Arrangements - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">52</span>
+                <span>Sitting Arrangements - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.53" data-title="Sitting Arrangements - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">53</span>
+                <span>Sitting Arrangements - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.54" data-title="Sitting Arrangements - Lecture 08">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">54</span>
+                <span>Sitting Arrangements - Lecture 08</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 19: Puzzle -->
+    <div class="chapter-dropdown" id="chapter19" data-chapter="puzzle">
+      <div class="chapter-header" onclick="toggleChapter('chapter19')">
+        <div class="chapter-info">
+          <i class="fas fa-puzzle-piece chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 19</div>
+            <h3 class="chapter-title">Puzzle</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.55" data-title="Puzzle - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">55</span>
+                <span>Puzzle - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.56" data-title="Puzzle - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">56</span>
+                <span>Puzzle - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.57" data-title="Puzzle - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">57</span>
+                <span>Puzzle - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.58" data-title="Puzzle - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">58</span>
+                <span>Puzzle - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.59" data-title="Puzzle - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">59</span>
+                <span>Puzzle - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.60" data-title="Puzzle - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">60</span>
+                <span>Puzzle - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 20: Venn Diagram -->
+    <div class="chapter-dropdown" id="chapter20" data-chapter="venn diagram">
+      <div class="chapter-header" onclick="toggleChapter('chapter20')">
+        <div class="chapter-info">
+          <i class="fas fa-circle-notch chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 20</div>
+            <h3 class="chapter-title">Venn Diagram</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 4 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.61" data-title="Venn Diagram - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">61</span>
+                <span>Venn Diagram - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.62" data-title="Venn Diagram - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">62</span>
+                <span>Venn Diagram - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.63" data-title="Venn Diagram - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">63</span>
+                <span>Venn Diagram - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.64" data-title="Venn Diagram - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">64</span>
+                <span>Venn Diagram - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 21: Dice -->
+    <div class="chapter-dropdown" id="chapter21" data-chapter="dice">
+      <div class="chapter-header" onclick="toggleChapter('chapter21')">
+        <div class="chapter-info">
+          <i class="fas fa-dice chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 21</div>
+            <h3 class="chapter-title">Dice</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.65" data-title="Dice - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">65</span>
+                <span>Dice - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.66" data-title="Dice - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">66</span>
+                <span>Dice - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.67" data-title="Dice - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">67</span>
+                <span>Dice - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.68" data-title="Dice - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">68</span>
+                <span>Dice - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.69" data-title="Dice - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">69</span>
+                <span>Dice - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.70" data-title="Dice - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">70</span>
+                <span>Dice - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 22: Cube & Cuboid -->
+    <div class="chapter-dropdown" id="chapter22" data-chapter="cube cuboid">
+      <div class="chapter-header" onclick="toggleChapter('chapter22')">
+        <div class="chapter-info">
+          <i class="fas fa-cube chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 22</div>
+            <h3 class="chapter-title">Cube & Cuboid</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 5 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.71" data-title="Cube & Cuboid - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">71</span>
+                <span>Cube & Cuboid - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.72" data-title="Cube & Cuboid - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">72</span>
+                <span>Cube & Cuboid - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.73" data-title="Cube & Cuboid - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">73</span>
+                <span>Cube & Cuboid - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.74" data-title="Cube & Cuboid - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">74</span>
+                <span>Cube & Cuboid - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.75" data-title="Cube & Cuboid - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">75</span>
+                <span>Cube & Cuboid - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 23: Counting Figures -->
+    <div class="chapter-dropdown" id="chapter23" data-chapter="counting figures">
+      <div class="chapter-header" onclick="toggleChapter('chapter23')">
+        <div class="chapter-info">
+          <i class="fas fa-calculator chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 23</div>
+            <h3 class="chapter-title">Counting Figures</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 7 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.76" data-title="Counting Figures - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">76</span>
+                <span>Counting Figures - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.77" data-title="Counting Figures - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">77</span>
+                <span>Counting Figures - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.78" data-title="Counting Figures - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">78</span>
+                <span>Counting Figures - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.79" data-title="Counting Figures - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">79</span>
+                <span>Counting Figures - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.80" data-title="Counting Figures - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">80</span>
+                <span>Counting Figures - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.81" data-title="Counting Figures - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">81</span>
+                <span>Counting Figures - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.82" data-title="Counting Figures - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">82</span>
+                <span>Counting Figures - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 24: Blood Relations -->
+    <div class="chapter-dropdown" id="chapter24" data-chapter="blood relations">
+      <div class="chapter-header" onclick="toggleChapter('chapter24')">
+        <div class="chapter-info">
+          <i class="fas fa-users chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 24</div>
+            <h3 class="chapter-title">Blood Relations</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.83" data-title="Blood Relations - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">83</span>
+                <span>Blood Relations - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.84" data-title="Blood Relations - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">84</span>
+                <span>Blood Relations - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.85" data-title="Blood Relations - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">85</span>
+                <span>Blood Relations - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.86" data-title="Blood Relations - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">86</span>
+                <span>Blood Relations - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.87" data-title="Blood Relations - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">87</span>
+                <span>Blood Relations - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.88" data-title="Blood Relations - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">88</span>
+                <span>Blood Relations - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 25: Calendar -->
+    <div class="chapter-dropdown" id="chapter25" data-chapter="calendar">
+      <div class="chapter-header" onclick="toggleChapter('chapter25')">
+        <div class="chapter-info">
+          <i class="fas fa-calendar-alt chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 25</div>
+            <h3 class="chapter-title">Calendar</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 7 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.89" data-title="Calendar - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">89</span>
+                <span>Calendar - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.90" data-title="Calendar - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">90</span>
+                <span>Calendar - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.91" data-title="Calendar - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">91</span>
+                <span>Calendar - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.92" data-title="Calendar - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">92</span>
+                <span>Calendar - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.93" data-title="Calendar - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">93</span>
+                <span>Calendar - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.94" data-title="Calendar - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">94</span>
+                <span>Calendar - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.95" data-title="Calendar - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">95</span>
+                <span>Calendar - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 26: Inequalities -->
+    <div class="chapter-dropdown" id="chapter26" data-chapter="inequalities">
+      <div class="chapter-header" onclick="toggleChapter('chapter26')">
+        <div class="chapter-info">
+          <i class="fas fa-not-equal chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 26</div>
+            <h3 class="chapter-title">Inequalities</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 3 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.96" data-title="Inequalities - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">96</span>
+                <span>Inequalities - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.97" data-title="Inequalities - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">97</span>
+                <span>Inequalities - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.98" data-title="Inequalities - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">98</span>
+                <span>Inequalities - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 27: Ranking -->
+    <div class="chapter-dropdown" id="chapter27" data-chapter="ranking">
+      <div class="chapter-header" onclick="toggleChapter('chapter27')">
+        <div class="chapter-info">
+          <i class="fas fa-medal chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 27</div>
+            <h3 class="chapter-title">Ranking</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 3 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.99" data-title="Ranking - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">99</span>
+                <span>Ranking - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.100" data-title="Ranking - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">100</span>
+                <span>Ranking - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.101" data-title="Ranking - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">101</span>
+                <span>Ranking - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 28: Number Series -->
+    <div class="chapter-dropdown" id="chapter28" data-chapter="number series">
+      <div class="chapter-header" onclick="toggleChapter('chapter28')">
+        <div class="chapter-info">
+          <i class="fas fa-sort-numeric-up chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 28</div>
+            <h3 class="chapter-title">Number Series</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 3 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.102" data-title="Number Series - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">102</span>
+                <span>Number Series - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.103" data-title="Number Series - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">103</span>
+                <span>Number Series - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.104" data-title="Number Series - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">104</span>
+                <span>Number Series - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 29: Missing Number -->
+    <div class="chapter-dropdown" id="chapter29" data-chapter="missing number">
+      <div class="chapter-header" onclick="toggleChapter('chapter29')">
+        <div class="chapter-info">
+          <i class="fas fa-question chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 29</div>
+            <h3 class="chapter-title">Missing Number</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.105" data-title="Missing Number">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">105</span>
+                <span>Missing Number</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 30: Analogy -->
+    <div class="chapter-dropdown" id="chapter30" data-chapter="analogy">
+      <div class="chapter-header" onclick="toggleChapter('chapter30')">
+        <div class="chapter-info">
+          <i class="fas fa-exchange-alt chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 30</div>
+            <h3 class="chapter-title">Analogy</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 2 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.106" data-title="Analogy - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">106</span>
+                <span>Analogy - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.107" data-title="Analogy - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">107</span>
+                <span>Analogy - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 31: Classification -->
+    <div class="chapter-dropdown" id="chapter31" data-chapter="classification">
+      <div class="chapter-header" onclick="toggleChapter('chapter31')">
+        <div class="chapter-info">
+          <i class="fas fa-sitemap chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 31</div>
+            <h3 class="chapter-title">Classification</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 2 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.108" data-title="Classification - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">108</span>
+                <span>Classification - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.109" data-title="Classification - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">109</span>
+                <span>Classification - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 32: PYQ Practice -->
+    <div class="chapter-dropdown" id="chapter32" data-chapter="pyq practice previous year questions">
+      <div class="chapter-header" onclick="toggleChapter('chapter32')">
+        <div class="chapter-info">
+          <i class="fas fa-history chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 32</div>
+            <h3 class="chapter-title">PYQ Practice</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 3 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.110" data-title="PYQ Practice - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">110</span>
+                <span>PYQ Practice - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.111" data-title="PYQ Practice - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">111</span>
+                <span>PYQ Practice - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.112" data-title="PYQ Practice - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">112</span>
+                <span>PYQ Practice - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 33: Clock -->
+    <div class="chapter-dropdown" id="chapter33" data-chapter="clock">
+      <div class="chapter-header" onclick="toggleChapter('chapter33')">
+        <div class="chapter-info">
+          <i class="fas fa-clock chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 33</div>
+            <h3 class="chapter-title">Clock</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 6 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.113" data-title="Clock - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">113</span>
+                <span>Clock - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.114" data-title="Clock - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">114</span>
+                <span>Clock - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.115" data-title="Clock - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">115</span>
+                <span>Clock - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.116" data-title="Clock - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">116</span>
+                <span>Clock - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.117" data-title="Clock - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">117</span>
+                <span>Clock - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.118" data-title="Clock - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">118</span>
+                <span>Clock - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 34: Syllogism -->
+    <div class="chapter-dropdown" id="chapter34" data-chapter="syllogism">
+      <div class="chapter-header" onclick="toggleChapter('chapter34')">
+        <div class="chapter-info">
+          <i class="fas fa-project-diagram chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 34</div>
+            <h3 class="chapter-title">Syllogism</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 8 Lectures
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.119" data-title="Syllogism - Lecture 01">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">119</span>
+                <span>Syllogism - Lecture 01</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.120" data-title="Syllogism - Lecture 02">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">120</span>
+                <span>Syllogism - Lecture 02</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.121" data-title="Syllogism - Lecture 03">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">121</span>
+                <span>Syllogism - Lecture 03</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.122" data-title="Syllogism - Lecture 04">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">122</span>
+                <span>Syllogism - Lecture 04</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.123" data-title="Syllogism - Lecture 05">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">123</span>
+                <span>Syllogism - Lecture 05</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.124" data-title="Syllogism - Lecture 06">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">124</span>
+                <span>Syllogism - Lecture 06</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.125" data-title="Syllogism - Lecture 07">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">125</span>
+                <span>Syllogism - Lecture 07</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+          <div class="video-item" data-video-id="REAS.LEC.VDO.126" data-title="Syllogism - Lecture 08">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">126</span>
+                <span>Syllogism - Lecture 08</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 35: Data Sufficiency -->
+    <div class="chapter-dropdown" id="chapter35" data-chapter="data sufficiency">
+      <div class="chapter-header" onclick="toggleChapter('chapter35')">
+        <div class="chapter-info">
+          <i class="fas fa-database chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 35</div>
+            <h3 class="chapter-title">Data Sufficiency</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="REAS.LEC.VDO.128" data-title="Data Sufficiency">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">128</span>
+                <span>Data Sufficiency</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter 36: Doubt Class -->
+    <div class="chapter-dropdown" id="chapter36" data-chapter="doubt class">
+      <div class="chapter-header" onclick="toggleChapter('chapter36')">
+        <div class="chapter-info">
+          <i class="fas fa-question-circle chapter-icon"></i>
+          <div class="chapter-details">
+            <div class="chapter-number">Chapter 36</div>
+            <h3 class="chapter-title">Doubt Class</h3>
+            <p class="lecture-count">
+              <i class="fas fa-video"></i> 1 Lecture
+            </p>
+          </div>
+        </div>
+        <i class="fas fa-chevron-down dropdown-icon"></i>
+      </div>
+      <div class="video-list">
+        <div class="video-list-inner">
+          <div class="video-item" data-video-id="rDpBfbmOS5A" data-title="Doubt Class">
+            <div class="video-header">
+              <div class="video-title">
+                <i class="fas fa-play-circle video-icon"></i>
+                <span class="video-number">129</span>
+                <span>Doubt Class</span>
+              </div>
+              <button class="play-btn">
+                <i class="fas fa-play"></i>
+                <span>Play</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="video-modal">
+    <div class="video-modal-content">
+      <div class="video-modal-header">
+        <h3 id="videoTitle">Video Title</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="video-embed-container">
+        <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+  </footer>
+</div>
+
+<script>
+  // Toggle chapter dropdown
+  function toggleChapter(chapterId) {
+    const chapter = document.getElementById(chapterId);
+    const allChapters = document.querySelectorAll('.chapter-dropdown');
+
+    // Close all other chapters
+    allChapters.forEach(ch => {
+      if (ch.id !== chapterId && ch.classList.contains('expanded')) {
+        ch.classList.remove('expanded');
+      }
+    });
+
+    // Toggle current chapter
+    chapter.classList.toggle('expanded');
+  }
+
+  // Get modal elements
+  const videoModal = document.getElementById('videoModal');
+  const videoPlayer = document.getElementById('videoPlayer');
+  const videoTitle = document.getElementById('videoTitle');
+  const closeModal = document.querySelector('.close-modal');
+
+  // Get all video items
+  const videoItems = document.querySelectorAll('.video-item');
+
+  // Add click event to video items
+  videoItems.forEach(item => {
+    item.addEventListener('click', function(e) {
+      e.stopPropagation();
+
+      // Get video ID and title from data attributes
+      const videoId = this.getAttribute('data-video-id');
+      const title = this.getAttribute('data-title');
+
+      // Set iframe src with video ID
+      // Note: Replace REAS.LEC.VDO.XX with actual YouTube video IDs when available
+      videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&showinfo=0`;
+
+      // Set video title
+      videoTitle.textContent = title;
+
+      // Show modal
+      videoModal.style.display = 'flex';
+    });
+  });
+
+  // Close modal when clicking the close button
+  closeModal.addEventListener('click', function() {
+    videoModal.style.display = 'none';
+    // Stop video playback by removing src
+    videoPlayer.src = '';
+  });
+
+  // Close modal when clicking outside of it
+  window.addEventListener('click', function(e) {
+    if (e.target === videoModal) {
+      videoModal.style.display = 'none';
+      // Stop video playback by removing src
+      videoPlayer.src = '';
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && videoModal.style.display === 'flex') {
+      videoModal.style.display = 'none';
+      videoPlayer.src = '';
+    }
+  });
+
+  // Search functionality
+  const searchInput = document.getElementById('searchInput');
+  const clearSearchBtn = document.getElementById('clearSearch');
+  const noResults = document.getElementById('noResults');
+  const chaptersContainer = document.getElementById('chaptersContainer');
+
+  searchInput.addEventListener('input', function(e) {
+    const searchTerm = e.target.value.toLowerCase().trim();
+
+    // Show/hide clear button
+    if (searchTerm.length > 0) {
+      clearSearchBtn.classList.add('show');
+    } else {
+      clearSearchBtn.classList.remove('show');
+      // Reset all visibility when search is cleared
+      resetSearch();
+      return;
+    }
+
+    // Search through chapters and videos
+    const chapters = document.querySelectorAll('.chapter-dropdown');
+    let hasResults = false;
+
+    chapters.forEach(chapter => {
+      const chapterTitle = chapter.querySelector('.chapter-title').textContent.toLowerCase();
+      const chapterData = chapter.dataset.chapter || '';
+      const videos = chapter.querySelectorAll('.video-item');
+      let chapterHasMatch = false;
+
+      // Check if chapter title matches
+      if (chapterTitle.includes(searchTerm) || chapterData.includes(searchTerm)) {
+        chapterHasMatch = true;
+        hasResults = true;
+        // Show all videos in matching chapter
+        videos.forEach(video => {
+          video.classList.remove('hidden');
+        });
+      } else {
+        // Check videos in this chapter
+        videos.forEach(video => {
+          const videoTitle = video.dataset.title.toLowerCase();
+          const videoText = video.querySelector('.video-title').textContent.toLowerCase();
+
+          if (videoTitle.includes(searchTerm) || videoText.includes(searchTerm)) {
+            video.classList.remove('hidden');
+            chapterHasMatch = true;
+            hasResults = true;
+          } else {
+            video.classList.add('hidden');
+          }
+        });
+      }
+
+      // Show/hide chapter based on matches
+      if (chapterHasMatch) {
+        chapter.classList.remove('hidden');
+        // Expand chapter if it has matching videos
+        if (!chapter.classList.contains('expanded') && searchTerm.length > 0) {
+          chapter.classList.add('expanded');
+        }
+      } else {
+        chapter.classList.add('hidden');
+      }
+    });
+
+    // Show no results message if needed
+    if (!hasResults && searchTerm.length > 0) {
+      noResults.classList.add('show');
+      chaptersContainer.style.display = 'none';
+    } else {
+      noResults.classList.remove('show');
+      chaptersContainer.style.display = 'block';
+    }
+  });
+
+  // Clear search function
+  function clearSearch() {
+    searchInput.value = '';
+    clearSearchBtn.classList.remove('show');
+    resetSearch();
+  }
+
+  // Reset search visibility
+  function resetSearch() {
+    const chapters = document.querySelectorAll('.chapter-dropdown');
+    const videos = document.querySelectorAll('.video-item');
+
+    // Show all chapters and videos
+    chapters.forEach(chapter => {
+      chapter.classList.remove('hidden');
+      chapter.classList.remove('expanded');
+    });
+
+    videos.forEach(video => {
+      video.classList.remove('hidden');
+    });
+
+    // Hide no results message
+    noResults.classList.remove('show');
+    chaptersContainer.style.display = 'block';
+  }
+
+  // Initialize page
+  document.addEventListener('DOMContentLoaded', function() {
+    // Ensure all elements are visible on load
+    resetSearch();
+  });
+</script>
+
+</body>
+</html>
