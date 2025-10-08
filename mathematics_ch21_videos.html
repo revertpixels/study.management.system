@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Interpretation Videos | Mathematics | Study Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Video page specific styles */
+        .video-section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2.5rem;
+        }
+
+        .video-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .video-section h2:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .video-section p {
+            color: var(--secondary-color);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .video-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #edf2f7;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            overflow: hidden;
+        }
+
+        .video-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-button {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .video-info {
+            padding: 1.25rem;
+        }
+
+        .video-info h3 {
+            margin-bottom: 0.75rem;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        .video-info p {
+            color: var(--secondary-color);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            padding-top: 0.75rem;
+            border-top: 1px solid #f0f4f8;
+        }
+
+        .video-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-meta i {
+            margin-right: 0.4rem;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 2rem 0 3rem;
+        }
+
+        .navigation-buttons .btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+        }
+
+        /* Modal styles for embedded video player */
+        .video-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-modal-content {
+            width: 80%;
+            max-width: 900px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .video-modal-header {
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .video-modal-header h3 {
+            margin: 0;
+            color: var(--primary-color);
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--danger-color);
+        }
+
+        .video-embed-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-embed-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .video-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .video-section {
+                padding: 1.5rem;
+            }
+
+            .video-modal-content {
+                width: 95%;
+            }
+        }
+
+        /* Add thin border to video cards */
+        .video-card {
+            border: 1px solid #d1d5db;
+        }
+
+        /* Optional: Make border darker on hover */
+        .video-card:hover {
+            border-color: #9ca3af;
+        }
+        .video-thumbnail {
+            border-bottom: 1px solid #9ca3af;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <div class="header-content">
+            <h1>Data Interpretation - Video Lectures</h1>
+            <p>Chapter 21 of Mathematics</p>
+        </div>
+    </header>
+
+    <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <span>/</span>
+        <a href="mathematics.html">Mathematics</a>
+        <span>/</span>
+        <a href="mathematics_ch21.html">Chapter 21 - Data Interpretation</a>
+        <span>/</span>
+        <a href="mathematics_ch21_videos.html" class="active">Video Lectures</a>
+    </div>
+
+    <section class="video-section">
+        <h2>Video Lectures for Data Interpretation</h2>
+        <p>These video lectures cover analyzing and interpreting data from tables, bar graphs, pie charts, line graphs, and mixed charts. Learn techniques to solve complex DI problems quickly and accurately for competitive exams. Watch them in sequence for better understanding.</p>
+
+        <div class="video-grid">
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="y7ugQcEp0dI" data-title="Data Interpretation – Lecture (01)">
+                    <div class="video-thumbnail">
+                        <img src="DataInterpretationCover.png" alt="Lecture 1">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Interpretation – Lecture (01)</h3>
+                        <p>Data Interpretation - Lecture (01) by Pawan Rao Sir</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="-VEfAG7kVaM" data-title="Data Interpretation – Lecture (02)">
+                    <div class="video-thumbnail">
+                        <img src="DataInterpretationCover.png" alt="Lecture 2">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Interpretation – Lecture (02)</h3>
+                        <p>Data Interpretation - Lecture (02) by Pawan Rao Sir</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="X5ebvnF8Juk" data-title="Data Interpretation – Lecture (03)">
+                    <div class="video-thumbnail">
+                        <img src="DataInterpretationCover.png" alt="Lecture 3">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Interpretation – Lecture (03)</h3>
+                        <p>Data Interpretation - Lecture (03) by Pawan Rao Sir</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="5apaLGBhwVo" data-title="Data Interpretation – Lecture (04)">
+                    <div class="video-thumbnail">
+                        <img src="DataInterpretationCover.png" alt="Lecture 4">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Interpretation – Lecture (04)</h3>
+                        <p>Data Interpretation - Lecture (04) by Pawan Rao Sir</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="video-card">
+                <a href="#" class="video-link" data-video-id="QoAOlyYxtmY" data-title="Data Interpretation – Lecture (05)">
+                    <div class="video-thumbnail">
+                        <img src="DataInterpretationCover.png" alt="Lecture 5">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3>Data Interpretation – Lecture (05)</h3>
+                        <p>Data Interpretation - Lecture (05) by Pawan Rao Sir</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="navigation-buttons">
+        <a href="mathematics_ch20_videos.html" class="btn"><i class="fas fa-arrow-left"></i> Previous Chapter</a>
+        <a href="mathematics_ch22_videos.html" class="btn">Next Chapter <i class="fas fa-arrow-right"></i></a>
+    </section>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <div class="video-modal-header">
+                <h3 id="videoTitle">Video Title</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="video-embed-container">
+                <iframe id="videoPlayer" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Haranath Saha | Personal Study Management System</p>
+    </footer>
+</div>
+
+<script>
+    // Get modal elements
+    const videoModal = document.getElementById('videoModal');
+    const videoPlayer = document.getElementById('videoPlayer');
+    const videoTitle = document.getElementById('videoTitle');
+    const closeModal = document.querySelector('.close-modal');
+
+    // Get all video links
+    const videoLinks = document.querySelectorAll('.video-link');
+
+    // Add click event to video links
+    videoLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get video ID and title from data attributes
+            const videoId = this.getAttribute('data-video-id');
+            const title = this.getAttribute('data-title');
+
+            // Set iframe src with video ID
+            videoPlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+
+            // Set video title
+            videoTitle.textContent = title;
+
+            // Show modal
+            videoModal.style.display = 'flex';
+        });
+    });
+
+    // Close modal when clicking the close button
+    closeModal.addEventListener('click', function() {
+        videoModal.style.display = 'none';
+        // Stop video playback by removing src
+        videoPlayer.src = '';
+    });
+
+    // Close modal when clicking outside of it
+    window.addEventListener('click', function(e) {
+        if (e.target === videoModal) {
+            videoModal.style.display = 'none';
+            // Stop video playback by removing src
+            videoPlayer.src = '';
+        }
+    });
+</script>
+
+</body>
+</html>
